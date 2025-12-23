@@ -7,8 +7,8 @@ import io
 from contextlib import redirect_stdout
 from langchain_openai import ChatOpenAI
 from langchain_community.graphs import Neo4jGraph
-from langchain.chains import GraphCypherQAChain
-from langchain.prompts import PromptTemplate, FewShotPromptTemplate
+from langchain_classic.chains import GraphCypherQAChain
+from langchain_classic.prompts import PromptTemplate, FewShotPromptTemplate
 from neo4j import GraphDatabase
 import dotenv
 import certifi
