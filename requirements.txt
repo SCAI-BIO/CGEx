@@ -1,0 +1,10 @@
+certifi
+dash
+dash-bootstrap-components
+dash-cytoscape
+requests
+langchain
+langchain-openai
+langchain-community
+neo4j
+python-dotenv

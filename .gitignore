@@ -1,0 +1,8 @@
+# Environment variables
+.env
+
+# Folders to ignore (at repo root)
+X/
+CGEX VERSIONS/
+results/
+.cgex2.0/

@@ -1,0 +1,44 @@
+{
+    "examples": [
+        {
+            "question": "What are COVID-associated genes?",
+            "cypher": "MATCH path = (g)-[r]-(d) WHERE toLower(d.name) CONTAINS 'covid' RETURN path LIMIT 5"
+        },
+        {
+            "question": " What proteins are associated with COVID and NDDs?",
+            "cypher": "MATCH (p:Protein)-[r]-(d) WHERE toLower(d.name) CONTAINS 'covid' OR toLower(d.name) CONTAINS 'alzheimer' OR toLower(d.name) CONTAINS 'parkinson' RETURN p, r, d LIMIT 5"
+        },
+        {
+            "question": "What protein modifications are found in COVID patients?",
+            "cypher": "MATCH path = (p:ProteinModification)-[r*..3]-(d) WHERE toLower(d.name) CONTAINS 'covid' RETURN path LIMIT 5"
+        },
+        {
+            "question": "What microRNAs regulate genes involved in COVID?",
+            "cypher": "MATCH path = (m:MicroRna)-[r*..2]-(g:Gene)-[r2*..2]-(d) WHERE toLower(d.name) CONTAINS 'covid' RETURN path LIMIT 10"
+        },
+        {
+            "question": "What drugs target COVID-related proteins?",
+            "cypher": "MATCH (drug)-[r]-(p:Protein)-[r2]-(d) WHERE toLower(d.name) CONTAINS 'covid' AND toLower(drug.name) CONTAINS 'drug' RETURN drug, r, p, r2, d LIMIT 10"
+        },
+        {
+            "question": "How does COVID-19 influence the progression of dementia?",
+            "cypher": "MATCH (c)-[r]-(d) WHERE toLower(c.name) CONTAINS 'covid' AND toLower(d.name) CONTAINS 'dementia' RETURN c, r, d LIMIT 10"
+        },
+        {
+            "question": "What role does inflammation play in the connection between COVID-19 and Parkinsons disease?",
+            "cypher": "MATCH (i)-[r]-(c)-[r2]-(p) WHERE toLower(i.name) CONTAINS 'inflammation' AND toLower(c.name) CONTAINS 'covid' AND toLower(p.name) CONTAINS 'parkinson' RETURN i, r, c, r2, p LIMIT 5"
+        },
+        {
+            "question": "Does hypertension increase the susceptibility of COVID-19 patients to neurodegenerative diseases?",
+            "cypher": "MATCH (h)-[r]-(c)-[r2]-(n) WHERE toLower(h.name) CONTAINS 'hypertension' AND toLower(c.name) CONTAINS 'covid' AND toLower(n.name) CONTAINS 'neuro' RETURN h, r, c, r2, n LIMIT 5"
+        },
+        {
+            "question": "Do MAPT variants directly affect tau aggregation, leading to diseases like Parkinsonism or Alzheimers?",
+            "cypher": "MATCH path = (g)-[r*..3]-(v) WHERE toLower(g.name) CONTAINS 'mapt' AND toLower(v.name) CONTAINS 'variant' RETURN path LIMIT 5"
+        },
+        {
+            "question": "Does SNCA share regulatory pathways with MAPT (tau protein) in facilitating neurodegeneration?",
+            "cypher": "MATCH path = (g1)-[r]-(p)-[r2]-(g2) WHERE toLower(g1.name) CONTAINS 'snca' AND (toLower(p.name) CONTAINS 'alzheimer' OR toLower(p.name) CONTAINS 'parkinson' OR toLower(p.name) CONTAINS 'neuro') AND toLower(g2.name) CONTAINS 'mapt' RETURN path LIMIT 10"
+        }
+    ]
+}
